@@ -8,7 +8,7 @@ import { HomeFaqSection } from "@/components/home-faq-section";
 import { IntegrationsSection } from "@/components/integrations-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { UseCasesSection } from "@/components/use-cases-section";
-import { Badge, Button, Card, Console, SectionHeader } from "@/components/ui";
+import { Badge, Button, Card, Console, Marquee, SectionHeader } from "@/components/ui";
 
 const ogImage = "https://ghostatlas.com/og/marketing.png";
 
@@ -74,6 +74,8 @@ const stats = [
   ["99.99%", "uptime"]
 ];
 
+const trustLogos = ["Selenium", "Puppeteer", "Playwright", "Scrapy", "FoxyProxy", "cURL", "Python", "Node.js", "Go", "PHP"];
+
 const developerCards = [
   { icon: FileCode2, title: "API-first workflows", copy: "Generate endpoints, rotate sessions, and inspect usage from predictable APIs." },
   { icon: Database, title: "Proxy APIs", copy: "Create credentials, rotate sessions, inspect usage, and manage routing from code." },
@@ -111,6 +113,15 @@ export default function LandingPage() {
           </div>
 
           <Console />
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-bg-elevated">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-6 py-8 md:flex-row md:items-center">
+          <p className="shrink-0 font-mono text-xs uppercase tracking-normal text-text-muted">
+            Trusted by teams using
+          </p>
+          <Marquee items={trustLogos} className="min-w-0 flex-1" />
         </div>
       </section>
 
