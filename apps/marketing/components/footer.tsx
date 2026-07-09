@@ -1,165 +1,75 @@
 import Link from "next/link";
-import { Github, Linkedin, Mail, MessageCircle, MessageSquare, Send, Youtube, type LucideIcon } from "lucide-react";
 
-const contactIcons = [
-  { label: "Email", href: "mailto:support@ghostatlasip.com", icon: Mail },
-  { label: "WhatsApp", href: "#", icon: MessageCircle },
-  { label: "Telegram", href: "#", icon: Send },
-  { label: "YouTube", href: "#", icon: Youtube },
-  { label: "GitHub", href: "#", icon: Github },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
-  { label: "Discord", href: "#", icon: MessageSquare }
+import { APP_URL, SUPPORT_EMAIL } from "@/lib/site";
+
+const productLinks = [
+  "Rotating Residential",
+  "Static Datacenter",
+  "Static ISP",
+  "Static Mobile"
 ];
 
-const socialIcons = contactIcons.filter((item) => ["YouTube", "GitHub", "LinkedIn", "Discord"].includes(item.label));
-
-const columns = [
-  {
-    title: "Terms",
-    links: [
-      { label: "Privacy", href: "#" },
-      { label: "Terms", href: "#" },
-      { label: "Cookie", href: "#" },
-      { label: "Refund", href: "#" }
-    ]
-  },
-  {
-    title: "Proxies",
-    links: [
-      { label: "Residential proxies", href: "/products/residential" },
-      { label: "Static residential", href: "/products/static-residential" },
-      { label: "Datacenter proxies", href: "/products/datacenter" },
-      { label: "Mobile proxies", href: "/products/mobile" }
-    ]
-  },
-  {
-    title: "Developers",
-    links: [
-      { label: "Documentation", href: "/docs" },
-      { label: "API reference", href: "/api-reference" },
-      { label: "Status", href: "/status" },
-      { label: "Integrations", href: "/integrations" }
-    ]
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "/about" },
-      { label: "Blog", href: "/blog" },
-      { label: "Contact", href: "/contact" }
-    ]
-  }
-];
-
-const locations = [
-  { label: "United States proxies", href: "/products/residential?country=us" },
-  { label: "United Kingdom proxies", href: "/products/residential?country=uk" },
-  { label: "Canada proxies", href: "/products/residential?country=ca" },
-  { label: "France proxies", href: "/products/residential?country=fr" },
-  { label: "Germany proxies", href: "/products/residential?country=de" },
-  { label: "Netherlands proxies", href: "/products/residential?country=nl" },
-  { label: "Japan proxies", href: "/products/residential?country=jp" }
-];
-
-const dataFor = [
-  { label: "Data for AI training", href: "#" },
-  { label: "YouTube data for AI Training", href: "#" },
-  { label: "Ecommerce Intelligence", href: "#" },
-  { label: "Real Estate Intelligence", href: "#" }
-];
-
-function IconLink({ item }: { item: { label: string; href: string; icon: LucideIcon } }) {
-  const Icon = item.icon;
-
-  return (
-    <Link
-      href={item.href}
-      aria-label={item.label}
-      className="flex h-9 w-9 items-center justify-center rounded-lg border border-border p-2 text-text-muted transition-colors hover:border-[#2a2a2a] hover:text-text-primary"
-    >
-      <Icon className="h-5 w-5" aria-hidden="true" />
-    </Link>
-  );
-}
-
-function LinkList({ links }: { links: Array<{ label: string; href: string }> }) {
-  return (
-    <ul className="mt-4 text-sm text-text-secondary">
-      {links.map((link) => (
-        <li key={link.label} className="py-1.5">
-          <Link href={link.href} className="transition-colors hover:text-text-primary">
-            {link.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
+const legalLinks = ["Terms of Service", "Privacy Policy", "Acceptable Use Policy"];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-bg-elevated">
-      <div className="mx-auto w-full max-w-7xl px-6 pb-8 pt-24">
-        <div className="grid gap-12 lg:grid-cols-[minmax(320px,1.45fr)_repeat(4,minmax(0,1fr))]">
-          <div className="min-w-[300px]">
-            <Link
-              href="/"
-              className="whitespace-nowrap text-3xl font-bold tracking-[0.05em] text-text-primary"
-            >
-              GHOSTATLAS IP
+    <footer className="bg-deep text-jade-bg">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-14 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div>
+          <Link href="/" className="flex items-baseline gap-0.5">
+            <span className="font-serif text-xl font-semibold">Ghostatlas</span>
+            <span className="font-mono text-xs text-mint">IP</span>
+          </Link>
+          <p className="mt-4 max-w-sm text-sm leading-7 text-jade-bg/55">
+            Proxies that route like they don&apos;t exist. Infrastructure for developers, scrapers
+            and automation teams worldwide.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-jade-bg/40">Products</h3>
+          <div className="mt-4 flex flex-col gap-3 text-sm">
+            {productLinks.map((label) => (
+              <Link key={label} href="/#solutions" className="text-jade-bg/70 transition hover:text-mint">
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-jade-bg/40">Legal</h3>
+          <div className="mt-4 flex flex-col gap-3 text-sm">
+            {legalLinks.map((label) => (
+              <Link key={label} href={APP_URL} className="text-jade-bg/70 transition hover:text-mint">
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-mono text-[10px] uppercase tracking-[0.16em] text-jade-bg/40">Support</h3>
+          <div className="mt-4 flex flex-col gap-3 text-sm">
+            <Link href={`mailto:${SUPPORT_EMAIL}`} className="text-jade-bg/70 transition hover:text-mint">
+              {SUPPORT_EMAIL}
             </Link>
-            <p className="mt-4 max-w-md text-lg leading-8 text-text-secondary">
-              High-performance proxy infrastructure for teams that need reliable access, global reach, and clean developer workflows.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {contactIcons.map((item) => (
-                <IconLink key={item.label} item={item} />
-              ))}
-            </div>
-            <div className="mt-8">
-              <h3 className="text-xs font-medium uppercase tracking-wider text-text-muted">Follow us</h3>
-              <div className="mt-4 flex flex-wrap gap-3">
-                {socialIcons.map((item) => (
-                  <IconLink key={item.label} item={item} />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {columns.map((column) => (
-            <div key={column.title}>
-              <h3 className="text-xs font-medium uppercase tracking-wider text-text-muted">{column.title}</h3>
-              <LinkList links={column.links} />
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-16 grid gap-10 border-t border-border pt-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <h3 className="text-xs font-medium uppercase tracking-wider text-text-muted">195+ Locations</h3>
-            <div className="mt-4 grid gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
-              {locations.map((link) => (
-                <Link key={link.label} href={link.href} className="py-1.5 text-sm text-text-secondary transition-colors hover:text-text-primary">
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xs font-medium uppercase tracking-wider text-text-muted">Data for</h3>
-            <div className="mt-4 grid gap-x-6 sm:grid-cols-2">
-              {dataFor.map((link) => (
-                <Link key={link.label} href={link.href} className="py-1.5 text-sm text-text-secondary transition-colors hover:text-text-primary">
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            <Link href={APP_URL} className="text-jade-bg/70 transition hover:text-mint">
+              Dashboard
+            </Link>
+            <Link href={APP_URL} className="text-jade-bg/70 transition hover:text-mint">
+              API Docs
+            </Link>
           </div>
         </div>
-
-        <div className="mt-16 flex flex-col gap-3 border-t border-border pt-8 text-xs text-text-muted md:flex-row md:items-center md:justify-between">
-          <p>&copy; 2026 GHOSTATLAS IP. All rights reserved.</p>
-          <p className="font-mono">GHOSTATLAS IP. Route smarter. Scrape cleaner. Ship faster.</p>
+      </div>
+      <div className="border-t border-jade-bg/10">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-6 py-5 font-mono text-[10.5px] text-jade-bg/40 md:flex-row md:items-center md:justify-between">
+          <span>(C) 2026 GHOSTATLASIP.COM</span>
+          <span className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-mint animate-pulse" />
+            ALL SYSTEMS OPERATIONAL
+          </span>
         </div>
       </div>
     </footer>

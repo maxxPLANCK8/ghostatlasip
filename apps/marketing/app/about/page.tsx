@@ -76,7 +76,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-semibold">Ready to route globally?</h2>
               <p className="mt-3 text-text-secondary">Start with a free trial and test GHOSTATLAS IP in your own stack.</p>
             </div>
-            <Button href="https://app.ghostatlas.com" variant="accent" size="lg">
+            <Button href="https://app.ghostatlasip.com" variant="accent" size="lg">
               Start your free trial
             </Button>
           </div>

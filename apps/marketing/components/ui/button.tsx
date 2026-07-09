@@ -22,8 +22,8 @@ export function Button({
       href={href}
       className={cn(
         "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
-        variant === "primary" && "bg-text-primary text-bg-primary hover:bg-text-primary/90",
-        variant === "accent" && "bg-accent text-bg-primary hover:bg-accent/90",
+        variant === "primary" && "bg-deep text-jade-bg hover:bg-deep/90",
+        variant === "accent" && "bg-accent text-jade-bg hover:bg-accent-dim",
         variant === "ghost" &&
           "border border-border bg-transparent text-text-primary hover:border-accent/60 hover:text-accent",
         size === "sm" && "h-9 px-4 text-sm",
